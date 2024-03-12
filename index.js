@@ -1,15 +1,16 @@
 const express = require("express")
 const { readdirSync } = require("fs")
 const { join } = require("path")
-var cors = require('cors')
+const cors = require('cors')
 const app = express()
-app.use(cors())
+
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3001
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(cors())
 
 readdirSync(join(__dirname, "routes"))
   .filter((file) => {
